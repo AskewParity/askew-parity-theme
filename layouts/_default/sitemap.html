@@ -1,0 +1,161 @@
+{{ define "main" }}
+<div class="sitemap-container">
+    <h1>Site Map</h1>
+    <p class="sitemap-description">Complete overview of all pages and content on this website.</p>
+    
+    <div class="sitemap-tree">
+        {{ template "sitemap-tree-item" (dict "page" .Site.Home "level" 0 "maxLevel" 3) }}
+    </div>
+</div>
+
+<style>
+.sitemap-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.sitemap-description {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.sitemap-tree {
+    font-family: 'Courier New', monospace;
+}
+
+.sitemap-item {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.sitemap-item:hover {
+    background-color: #f5f5f5;
+}
+
+.sitemap-item a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.sitemap-item a:hover {
+    color: #007acc;
+}
+
+.sitemap-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+    color: #666;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sitemap-toggle:hover {
+    color: #007acc;
+}
+
+.sitemap-children {
+    margin-left: 2rem;
+    border-left: 2px solid #e0e0e0;
+    padding-left: 1rem;
+}
+
+.sitemap-children.collapsed {
+    display: none;
+}
+
+.sitemap-icon {
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.sitemap-page-icon::before {
+    content: "📄";
+}
+
+.sitemap-folder-icon::before {
+    content: "📁";
+}
+
+.sitemap-post-icon::before {
+    content: "📝";
+}
+
+.sitemap-taxonomy-icon::before {
+    content: "🏷️";
+}
+
+.sitemap-level-0 { margin-left: 0; }
+.sitemap-level-1 { margin-left: 1rem; }
+.sitemap-level-2 { margin-left: 2rem; }
+.sitemap-level-3 { margin-left: 3rem; }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggles = document.querySelectorAll('.sitemap-toggle');
+    
+    toggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const children = this.closest('.sitemap-item').querySelector('.sitemap-children');
+            if (children) {
+                children.classList.toggle('collapsed');
+                this.textContent = children.classList.contains('collapsed') ? '▶' : '▼';
+            }
+        });
+    });
+});
+</script>
+{{ end }}
+
+{{ define "sitemap-tree-item" }}
+{{ $page := .page }}
+{{ $level := .level }}
+{{ $maxLevel := .maxLevel }}
+
+{{ if and $page (le $level $maxLevel) }}
+<div class="sitemap-item sitemap-level-{{ $level }}">
+    <a href="{{ $page.RelPermalink }}">
+        {{ if gt $level 0 }}
+            <span class="sitemap-icon sitemap-page-icon"></span>
+        {{ else }}
+            <span class="sitemap-icon sitemap-folder-icon"></span>
+        {{ end }}
+        {{ if eq $level 0 }}
+            🏠 Home
+        {{ else }}
+            {{ $page.Title | default $page.Name }}
+        {{ end }}
+    </a>
+    
+    {{ if and (lt $level $maxLevel) (or $page.Pages $page.Sections) }}
+        {{ $hasChildren := or $page.Pages $page.Sections }}
+        {{ if $hasChildren }}
+            <button class="sitemap-toggle">▼</button>
+            <div class="sitemap-children">
+                {{ range $page.Sections }}
+                    {{ template "sitemap-tree-item" (dict "page" . "level" (add $level 1) "maxLevel" $maxLevel) }}
+                {{ end }}
+                {{ range $page.Pages }}
+                    {{ if not .IsSection }}
+                        {{ template "sitemap-tree-item" (dict "page" . "level" (add $level 1) "maxLevel" $maxLevel) }}
+                    {{ end }}
+                {{ end }}
+            </div>
+        {{ end }}
+    {{ end }}
+</div>
+{{ end }}
+{{ end }}

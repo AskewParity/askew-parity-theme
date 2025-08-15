@@ -1,8 +1,47 @@
 {{ define "main" }}
   <h1>{{ .Title }}</h1>
   {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
+  
+  {{ if .Pages }}
+    {{ if and (eq .Kind "taxonomy") (eq .Type "tags") }}
+      <!-- Tags layout - minimal bubbles -->
+      <div class="tags-grid">
+        {{ range .Pages.ByTitle }}
+          <a href="{{ .RelPermalink }}" class="tag-bubble">
+            {{ .LinkTitle }}
+          </a>
+        {{ end }}
+      </div>
+    {{ else }}
+      <!-- Posts layout -->
+      <div class="posts-grid">
+        {{ range .Pages }}
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+              {{ if .Params.tags }}
+                <div class="post-tags">
+                  {{ range .Params.tags }}
+                    <a href="/tags/{{ . | urlize }}/" class="tag">{{ . }}</a>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+            
+            <h2 class="post-title">
+              <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+            </h2>
+            
+            {{ if .Params.description }}
+              <p class="post-description">{{ .Params.description }}</p>
+            {{ end }}
+            
+            <div class="post-footer">
+              <a href="{{ .RelPermalink }}" class="read-more">Read Post →</a>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    {{ end }}
   {{ end }}
 {{ end }}
