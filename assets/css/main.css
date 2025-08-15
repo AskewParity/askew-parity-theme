@@ -19,45 +19,7 @@
 
 
 
-/* Manual dark theme override */
-[data-theme="dark"] {
-  --bg-color: #151a2a;
-  --text-color: #ebebeb;
-  --border-color: #2a3441;
-  --link-color: #79be;
-  --header-bg: #1e2535;
-  --accent-color: #4a9eff;
-  --muted-color: #a0a0a0;
-  --code-bg: #1e2535;
-  --success-color: #3d9b5a;
-  --warning-color: #f7b731;
-  --error-color: #bf4d4d;
-  --red-accent: #e74c3c;
-  --purple-accent: #b078be;
-  --orange-accent: #f7b731;
-  --green-accent: #3d9b5a;
-  --cyan-accent: #6bb8be;
-}
 
-/* Manual light theme override */
-[data-theme="light"] {
-  --bg-color: #fafafa;
-  --text-color: #2c3e50;
-  --border-color: #e1e8ed;
-  --link-color: #4a9eff;
-  --header-bg: var(--border-color);
-  --accent-color: var(--red-accent);
-  --muted-color: #7f8c8d;
-  --code-bg: #f8f9fa;
-  --success-color: #27ae60;
-  --warning-color: #f39c12;
-  --error-color: #e74c3c;
-  --red-accent: #bc2023;
-  --purple-accent: #e74c3c;
-  --orange-accent: #f39c12;
-  --green-accent: #0c6b37;
-  --purple-accent: #9b59b6;
-}
 
 body {
   color: var(--text-color);
@@ -151,18 +113,7 @@ h4 {
   font-weight: 600;
 }
 
-/* Dark mode header colors */
-[data-theme="dark"] h2 {
-  color: var(--orange-accent);
-}
 
-[data-theme="dark"] h3 {
-  color: var(--orange-accent);
-}
-
-[data-theme="dark"] h4 {
-  color: var(--orange-accent);
-}
 
 /* Code blocks and inline code */
 code {
@@ -498,18 +449,9 @@ footer {
   transform: translateX(-4px);
 }
 
-/* CSS-only theme toggle styles */
+/* Theme toggle styles */
 .theme-toggle-container {
   position: relative;
-}
-
-.theme-toggle-checkbox {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  margin: 0;
-  padding: 0;
 }
 
 .theme-toggle {
@@ -576,22 +518,13 @@ footer {
   z-index: 1;
 }
 
-/* Icon visibility based on theme state */
+/* Icon visibility - moon icon hidden by default */
 .theme-toggle .moon-icon {
   display: none;
 }
 
-/* When checkbox is checked (dark mode), show moon icon */
-.theme-toggle-checkbox:checked ~ .theme-toggle .sun-icon {
-  display: none;
-}
-
-.theme-toggle-checkbox:checked ~ .theme-toggle .moon-icon {
-  display: block;
-}
-
-/* Apply dark theme when checkbox is checked */
-.theme-toggle-checkbox:checked ~ body {
+/* Dark theme variables */
+[data-theme="dark"] {
   --bg-color: #151a2a;
   --text-color: #ebebeb;
   --border-color: #2a3441;
@@ -610,8 +543,8 @@ footer {
   --cyan-accent: #6bb8be;
 }
 
-/* Apply light theme when checkbox is unchecked */
-.theme-toggle-checkbox:not(:checked) ~ body {
+/* Light theme variables */
+[data-theme="light"] {
   --bg-color: #fafafa;
   --text-color: #2c3e50;
   --border-color: #e1e8ed;
