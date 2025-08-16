@@ -1,23 +1,98 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://clee.cloud/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Christopher Lee'
+theme = 'askew-parity-theme'
 
+# Performance optimizations
+[build]
+  writeStats = true
+
+[buildStats]
+  enable = true
+
+# Asset optimization
+[assets]
+  [assets.postcss]
+    use = ['autoprefixer']
+  [assets.js]
+    minify = true
+  [assets.css]
+    minify = true
+  [assets.images]
+    [assets.images.processing]
+      resize = ['webp']
+      quality = 85
+
+
+# Minification settings
+[minify]
+  [minify.css]
+    keepCSS2 = true
+    keepCSS3 = true
+    precision = 0
+  [minify.html]
+    keepComments = false
+    keepConditionalComments = false
+    keepDefaultAttrVals = false
+    keepDocumentTags = false
+    keepEndTags = false
+    keepQuotes = false
+    keepWhitespace = false
+  [minify.js]
+    keepVarNames = false
+    precision = 0
+  [minify.json]
+    precision = 0
+  [minify.svg]
+    precision = 0
+  [minify.xml]
+    keepWhitespace = false
+
+# Sitemap configuration
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+# Enable sitemap generation
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML"]
+  page = ["HTML"]
+
+# Menu configuration
 [[menus.main]]
 name = 'Home'
 pageRef = '/'
 weight = 10
 
 [[menus.main]]
+name = 'About'
+pageRef = '/about'
+weight = 20
+
+[[menus.main]]
+name = 'Projects'
+pageRef = '/projects'
+weight = 30
+
+[[menus.main]]
 name = 'Posts'
 pageRef = '/posts'
-weight = 20
+weight = 40
 
 [[menus.main]]
 name = 'Tags'
 pageRef = '/tags'
-weight = 30
+weight = 50
 
-[module]
-  [module.hugoVersion]
-    extended = false
-    min = "0.116.0"
+[[menus.main]]
+name = 'Site Map'
+pageRef = '/sitemap'
+weight = 60
