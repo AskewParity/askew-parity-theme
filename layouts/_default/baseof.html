@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="{{ or site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}" data-theme="light">
 <head>
+  <script>
+    // Prevent flash of unstyled content by setting theme immediately
+    (function() {
+      try {
+        var theme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        // Fallback to light theme if localStorage is not available
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
   {{ partial "head.html" . }}
 </head>
 <body>

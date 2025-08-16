@@ -23,6 +23,12 @@ function updateIconVisibility(theme) {
 document.addEventListener('DOMContentLoaded', function() {
   const html = document.documentElement;
   const savedTheme = localStorage.getItem('theme') || 'light';
-  html.setAttribute('data-theme', savedTheme);
-  updateIconVisibility(savedTheme);
+  const currentTheme = html.getAttribute('data-theme');
+  
+  // Only update if the theme hasn't been set by the inline script
+  if (!currentTheme || currentTheme === 'light') {
+    html.setAttribute('data-theme', savedTheme);
+  }
+  
+  updateIconVisibility(html.getAttribute('data-theme'));
 });
