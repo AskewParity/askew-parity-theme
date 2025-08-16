@@ -19,7 +19,12 @@
             <h3 class="sitemap-column-title">📄 All Pages (A-Z)</h3>
             <div class="sitemap-tree">
                 {{ range sort .Site.RegularPages "Title" }}
-                    {{ template "sitemap-tree-item" (dict "page" . "level" 0 "maxLevel" 2) }}
+                    <div class="sitemap-item sitemap-level-0">
+                        <a href="{{ .RelPermalink }}">
+                            <span class="sitemap-icon sitemap-page-icon"></span>
+                            {{ .Title | default .Name }}
+                        </a>
+                    </div>
                 {{ end }}
             </div>
         </div>
@@ -95,16 +100,32 @@
 
 .sitemap-item {
     margin: 0.5rem 0;
-    padding: 0.5rem;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--border-color);
+    background-color: var(--code-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .sitemap-item:hover {
-    background-color: rgba(188, 32, 35, 0.1);
+    background-color: rgba(188, 32, 35, 0.15);
     border-color: var(--red-accent);
     transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(188, 32, 35, 0.3);
+}
+
+/* Dark mode specific styling */
+[data-theme="dark"] .sitemap-item {
+    border: 2px solid #2a3441;
+    background-color: #1e2535;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .sitemap-item:hover {
+    background-color: rgba(231, 76, 60, 0.2);
+    border-color: #e74c3c;
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
 }
 
 .sitemap-item a {
