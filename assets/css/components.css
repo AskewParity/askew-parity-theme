@@ -1,0 +1,416 @@
+.site-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
+    color: var(--text-color);
+    flex-shrink: 0;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+/* Navigation styling - flattened structure */
+nav,
+nav ul {
+    display: contents;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 0;
+    margin: 0;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+nav li {
+    display: flex;
+    align-items: center;
+}
+
+/* Separator for all list items */
+nav li::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 1.2rem;
+    background-color: var(--muted-color);
+    margin: 0 0.5rem;
+    opacity: 0.5;
+}
+
+/* Remove separate `nav ul::after` rule as we are now treating items equally */
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+    transition: all 0.1s ease;
+    border: 1px solid transparent;
+    font-weight: 500;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+nav a:hover {
+    background-color: var(--green-accent);
+    color: white;
+}
+
+nav a.active {
+    background-color: var(--purple-accent);
+    color: white;
+    border-color: var(--purple-accent);
+}
+
+/* Success, warning, error styling */
+.success {
+    color: var(--success-color);
+    background-color: rgba(39, 174, 96, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+    border-left: 3px solid var(--success-color);
+    box-shadow: 0 2px 4px rgba(39, 174, 96, 0.1);
+}
+
+.warning {
+    color: var(--warning-color);
+    background-color: rgba(243, 156, 18, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+    border-left: 3px solid var(--warning-color);
+    box-shadow: 0 2px 4px rgba(243, 156, 18, 0.1);
+}
+
+.error {
+    color: var(--error-color);
+    background-color: rgba(231, 76, 60, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+    border-left: 3px solid var(--error-color);
+    box-shadow: 0 2px 4px rgba(231, 76, 60, 0.1);
+}
+
+/* Landing page styling */
+.landing-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.landing-section {
+    background-color: var(--bubble-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+    transition: all 0.1s ease;
+}
+
+.landing-section:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.landing-section h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.landing-section p {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.landing-link {
+    display: inline-block;
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.1s ease;
+}
+
+.landing-link:hover {
+    color: var(--accent-color);
+    transform: translateX(4px);
+}
+
+/* Posts grid styling */
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.post-card {
+    background-color: var(--bubble-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-left: 4px solid var(--accent-color);
+    transition: all 0.1s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.post-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--muted-color);
+}
+
+.post-meta time {
+    font-weight: 500;
+}
+
+.post-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: var(--bubble-bg);
+    color: var(--muted-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.1s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 15ch;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.tag:hover {
+    background-color: var(--green-accent);
+    color: white;
+}
+
+.post-title {
+    margin: 0 0 1rem 0;
+    font-size: 1.4rem;
+}
+
+.post-title a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.1s ease;
+}
+
+.post-title a:hover {
+    color: var(--accent-color);
+}
+
+.post-description {
+    color: var(--muted-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.post-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.read-more {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.1s ease;
+}
+
+.read-more:hover {
+    color: var(--accent-color);
+}
+
+/* Page header styling */
+.page-header {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.page-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--muted-color);
+    margin: 0;
+    border-bottom: none;
+}
+
+.page-date {
+    color: var(--muted-color);
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+/* Posts list styling (single column) */
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.post-card-single {
+    background-color: var(--bubble-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    border-left: 4px solid var(--accent-color);
+    transition: all 0.1s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+.post-card-single:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Tags grid styling (two columns) */
+.tags-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.tag-bubble {
+    display: inline-block;
+    background-color: var(--bubble-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 0.75rem 1.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.1s ease;
+}
+
+.tag-bubble:hover {
+    background-color: var(--green-accent);
+    color: white;
+    border-color: var(--green-accent);
+}
+
+/* Responsive design for tags grid */
+@media (max-width: 768px) {
+    .tags-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Back to tags link styling */
+.back-to-tags {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.back-link {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-link:hover {
+    color: var(--red-accent);
+}
+
+/* Theme toggle styles */
+.theme-toggle-container {
+    position: relative;
+}
+
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    padding: 0.6rem;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.theme-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--border-color);
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    border-radius: 50%;
+}
+
+.theme-toggle:hover::before {
+    opacity: 0.1;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+    border-color: var(--border-color);
+}
+
+.theme-toggle:hover svg {
+    transform: rotate(15deg);
+    fill: var(--accent-color);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle:focus {
+    outline: 2px solid var(--link-color);
+    outline-offset: 2px;
+}
+
+.theme-toggle svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
+    transition: transform 0.1s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Icon visibility - moon icon hidden by default */
+.theme-toggle .moon-icon {
+    display: none;
+}
