@@ -1,12 +1,9 @@
 {{ define "main" }}
 <div class="sitemap-container">
     <h1>Site Map</h1>
-    
-    <div class="sitemap-controls">
-        <button class="sitemap-control-btn" onclick="expandAll()">Expand All</button>
-        <button class="sitemap-control-btn" onclick="collapseAll()">Collapse All</button>
-    </div>
-    
+
+
+
     <div class="sitemap-columns" id="sitemap-columns">
         <div class="sitemap-column">
             <h3 class="sitemap-column-title">🏗️ Site Structure</h3>
@@ -19,12 +16,12 @@
             <h3 class="sitemap-column-title">📄 All Pages (A-Z)</h3>
             <div class="sitemap-tree">
                 {{ range sort .Site.RegularPages "Title" }}
-                    <div class="sitemap-item sitemap-level-0">
-                        <a href="{{ .RelPermalink }}">
-                            <span class="sitemap-icon sitemap-page-icon"></span>
-                            {{ .Title | default .Name }}
-                        </a>
-                    </div>
+                <div class="sitemap-item sitemap-level-0">
+                    <a href="{{ .RelPermalink }}">
+                        <span class="sitemap-icon sitemap-page-icon"></span>
+                        {{ .Title | default .Name }}
+                    </a>
+                </div>
                 {{ end }}
             </div>
         </div>
@@ -41,32 +38,31 @@
 <div class="sitemap-item sitemap-level-{{ $level }}">
     <a href="{{ $page.RelPermalink }}">
         {{ if gt $level 0 }}
-            <span class="sitemap-icon sitemap-page-icon"></span>
+        <span class="sitemap-icon sitemap-page-icon"></span>
         {{ else }}
-            <span class="sitemap-icon sitemap-folder-icon"></span>
+        <span class="sitemap-icon sitemap-folder-icon"></span>
         {{ end }}
         {{ if eq $level 0 }}
-            🏠 Home
+        🏠 Home
         {{ else }}
-            {{ $page.Title | default $page.Name }}
+        {{ $page.Title | default $page.Name }}
         {{ end }}
     </a>
-    
+
     {{ if and (lt $level $maxLevel) (or $page.Pages $page.Sections) }}
-        {{ $hasChildren := or $page.Pages $page.Sections }}
-        {{ if $hasChildren }}
-            <button class="sitemap-toggle">▼</button>
-            <div class="sitemap-children">
-                {{ range $page.Sections }}
-                    {{ template "sitemap-tree-item" (dict "page" . "level" (add $level 1) "maxLevel" $maxLevel) }}
-                {{ end }}
-                {{ range $page.Pages }}
-                    {{ if not .IsSection }}
-                        {{ template "sitemap-tree-item" (dict "page" . "level" (add $level 1) "maxLevel" $maxLevel) }}
-                    {{ end }}
-                {{ end }}
-            </div>
+    {{ $hasChildren := or $page.Pages $page.Sections }}
+    {{ if $hasChildren }}
+    <div class="sitemap-children">
+        {{ range $page.Sections }}
+        {{ template "sitemap-tree-item" (dict "page" . "level" (add $level 1) "maxLevel" $maxLevel) }}
         {{ end }}
+        {{ range $page.Pages }}
+        {{ if not .IsSection }}
+        {{ template "sitemap-tree-item" (dict "page" . "level" (add $level 1) "maxLevel" $maxLevel) }}
+        {{ end }}
+        {{ end }}
+    </div>
+    {{ end }}
     {{ end }}
 </div>
 {{ end }}

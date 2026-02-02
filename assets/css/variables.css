@@ -1,28 +1,24 @@
-:root {
-    --h1-color: var(--accent-color);
-    --bg-color: #ffecdc;
-    --header-color: var(--bg-color);
-    --text-color: #2c3e50;
-    --border-color: var(--accent-color);
-    --link-color: #4a9eff;
-    --header-bg: var(--header-color);
-    --accent-color: var(--blue-accent);
-    /* --muted-color: #7f8c8d; */
-    /* --code-bg: #f8f9fa; */
-    --muted-color: #7f8c8d;
-    --bubble-bg: #f8f9fa;
-    --code-bg: var(--text-color);
-    --success-color: #27ae60;
-    --warning-color: #f39c12;
-    --error-color: #e74c3c;
-    --red-accent: #bc2023;
-    --accent-color: #007CC3;
-    --purple-accent: #9b59b6;
-    --orange-accent: #f39c12;
-    --green-accent: #0c6b37;
+/* Dark theme variables */
+/* Dark theme variables - System Preference */
+@media (prefers-color-scheme: light) {
+    :root {
+        --header-bg: var(--header-color);
+        --accent-color: var(--blue-accent);
+        --muted-color: #7f8c8d;
+        --bubble-bg: #f8f9fa;
+        --code-bg: var(--text-color);
+        --success-color: #27ae60;
+        --warning-color: #f39c12;
+        --error-color: #e74c3c;
+        --red-accent: #bc2023;
+        --accent-color: #007CC3;
+        --purple-accent: #9b59b6;
+        --orange-accent: #f39c12;
+        --green-accent: #0c6b37;
+    }
 }
 
-/* Dark theme variables */
+/* Dark theme variables - Manual Override */
 [data-theme="dark"] {
     --h1-color: var(--orange-accent);
     --bg-color: #151a2a;
@@ -41,4 +37,27 @@
     --purple-accent: #b078be;
     --orange-accent: #f7b731;
     --green-accent: #3d9b5a;
+}
+
+/* Light theme variables - Manual Override */
+html[data-theme="light"] {
+    --h1-color: var(--accent-color);
+    --bg-color: #ffecdc;
+    --header-color: var(--bg-color);
+    --text-color: #2c3e50;
+    --border-color: var(--accent-color);
+    --link-color: #4a9eff;
+    --header-bg: var(--header-color);
+    --accent-color: var(--blue-accent);
+    --muted-color: #7f8c8d;
+    --bubble-bg: #f8f9fa;
+    --code-bg: var(--text-color);
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --error-color: #e74c3c;
+    --red-accent: #bc2023;
+    --accent-color: #007CC3;
+    --purple-accent: #9b59b6;
+    --orange-accent: #f39c12;
+    --green-accent: #0c6b37;
 }
