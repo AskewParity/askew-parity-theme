@@ -41,34 +41,7 @@ document.addEventListener('click', function (event) {
 });
 
 
-<<<<<<< Updated upstream
 // Initialize theme functionality when DOM is loaded
-=======
-// Sitemap functionality
-function expandAll() {
-    const toggles = document.querySelectorAll('.sitemap-toggle');
-    toggles.forEach(toggle => {
-        const children = toggle.closest('.sitemap-item').querySelector('.sitemap-children');
-        if (children && children.classList.contains('collapsed')) {
-            children.classList.remove('collapsed');
-            toggle.textContent = '▼';
-        }
-    });
-}
-
-function collapseAll() {
-    const toggles = document.querySelectorAll('.sitemap-toggle');
-    toggles.forEach(toggle => {
-        const children = toggle.closest('.sitemap-item').querySelector('.sitemap-children');
-        if (children && !children.classList.contains('collapsed')) {
-            children.classList.add('collapsed');
-            toggle.textContent = '▶';
-        }
-    });
-}
-
-// Initialize sitemap functionality when DOM is loaded
->>>>>>> Stashed changes
 document.addEventListener('DOMContentLoaded', function () {
     // Existing theme functionality
     const html = document.documentElement;
@@ -81,21 +54,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     updateIconVisibility(html.getAttribute('data-theme'));
-<<<<<<< Updated upstream
-=======
-
-    // Sitemap toggle functionality
-    const toggles = document.querySelectorAll('.sitemap-toggle');
-
-    toggles.forEach(toggle => {
-        toggle.addEventListener('click', function (e) {
-            e.preventDefault();
-            const children = this.closest('.sitemap-item').querySelector('.sitemap-children');
-            if (children) {
-                children.classList.toggle('collapsed');
-                this.textContent = children.classList.contains('collapsed') ? '▶' : '▼';
-            }
-        });
-    });
->>>>>>> Stashed changes
 });
