@@ -70,77 +70,6 @@ nav a.active {
     border-color: var(--purple-accent);
 }
 
-/* Success, warning, error styling */
-.success {
-    color: var(--success-color);
-    background-color: rgba(39, 174, 96, 0.1);
-    padding: 0.5rem;
-    border-radius: 4px;
-    border-left: 3px solid var(--success-color);
-    box-shadow: 0 2px 4px rgba(39, 174, 96, 0.1);
-}
-
-.warning {
-    color: var(--warning-color);
-    background-color: rgba(243, 156, 18, 0.1);
-    padding: 0.5rem;
-    border-radius: 4px;
-    border-left: 3px solid var(--warning-color);
-    box-shadow: 0 2px 4px rgba(243, 156, 18, 0.1);
-}
-
-.error {
-    color: var(--error-color);
-    background-color: rgba(231, 76, 60, 0.1);
-    padding: 0.5rem;
-    border-radius: 4px;
-    border-left: 3px solid var(--error-color);
-    box-shadow: 0 2px 4px rgba(231, 76, 60, 0.1);
-}
-
-/* Landing page styling */
-.landing-sections {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.landing-section {
-    background-color: var(--bubble-bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--accent-color);
-    transition: all 0.1s ease;
-}
-
-.landing-section:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.landing-section h3 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: var(--accent-color);
-}
-
-.landing-section p {
-    margin-bottom: 1rem;
-    color: var(--text-color);
-}
-
-.landing-link {
-    display: inline-block;
-    color: var(--link-color);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.1s ease;
-}
-
-.landing-link:hover {
-    color: var(--accent-color);
-    transform: translateX(4px);
-}
 
 /* Posts grid styling */
 .posts-grid {
@@ -271,20 +200,6 @@ nav a.active {
     flex-direction: column;
     gap: 2rem;
     margin: 2rem 0;
-}
-
-.post-card-single {
-    background-color: var(--bubble-bg);
-    border-radius: 12px;
-    padding: 2rem;
-    border-left: 4px solid var(--accent-color);
-    transition: all 0.1s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    width: 100%;
-}
-
-.post-card-single:hover {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 /* Tags grid styling (two columns) */

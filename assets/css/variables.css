@@ -24,7 +24,7 @@
     --bg-color: #151a2a;
     --text-color: #ebebeb;
     --border-color: var(--orange-accent);
-    --link-color: var(--red-accent);
+    --link-color: var(--accent-color);
     --header-bg: #1e2535;
     --accent-color: #4a9eff;
     --muted-color: #a0a0a0;
@@ -46,7 +46,7 @@ html[data-theme="light"] {
     --header-color: var(--bg-color);
     --text-color: #2c3e50;
     --border-color: var(--accent-color);
-    --link-color: #4a9eff;
+    --link-color: var(--red-accent);
     --header-bg: var(--header-color);
     --accent-color: var(--blue-accent);
     --muted-color: #7f8c8d;
